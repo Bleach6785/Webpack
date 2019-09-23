@@ -1,0 +1,20 @@
+{
+  "name": "Webpack",
+  "version": "1.0.0",
+  "description": "webpack入門",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bleach6785/Webpack.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Bleach6785/Webpack/issues"
+  },
+  "homepage": "https://github.com/Bleach6785/Webpack#readme"
+}
