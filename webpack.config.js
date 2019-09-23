@@ -9,6 +9,9 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     filename: 'js/index.js'
   },
+  devServer: {
+    contentBase: './dist' //啟動服務時檔案讀取的路徑
+  },
   // 由于plugin可以携带参数/选项，必须在wepback配置中，向plugins属性传入new实例
   plugins: [
     new CleanWebpackPlugin(),//实例化，参数为目录
