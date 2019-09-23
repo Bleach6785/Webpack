@@ -1,6 +1,7 @@
 var path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin'); //引入清除文件插件
 const HtmlWebpackPlugin = require('html-webpack-plugin'); //引入自動產生html檔案插件
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
   mode: 'development',
@@ -19,12 +20,18 @@ module.exports = {
         template: "./src/index.html",
         inject: true
     }),
+    new MiniCssExtractPlugin({
+      // Options similar to the same options in webpackOptions.output
+      // both options are optional
+      filename: "css/index.css",
+    })
   ],
   module: {
     rules: [{
         test: /\.scss$/,
         use: [
-            "style-loader", // 将 JS 字符串生成为 style 节点
+            MiniCssExtractPlugin.loader,// 將CSS提取到單獨的文件中
+            // "style-loader", // 将 JS 字符串生成为 style 节点
             "css-loader", // 将 CSS 转化成 CommonJS 模块
             "sass-loader" // 将 Sass 编译成 CSS，默认使用 Node Sass
         ]
