@@ -1,4 +1,4 @@
-var path = require('path');
+const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin'); //引入清除文件插件
 const HtmlWebpackPlugin = require('html-webpack-plugin'); //引入自動產生html檔案插件
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
