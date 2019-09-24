@@ -4,4 +4,7 @@ $bg-color: rgb(89, 177, 89);
 
 body {
     background-color: $bg-color;
+    background-image: url('../img/logo.jpg');
+    background-repeat: no-repeat;
+    background-position: center center;
 }
