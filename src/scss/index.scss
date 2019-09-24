@@ -8,3 +8,8 @@ body {
     background-repeat: no-repeat;
     background-position: center center;
 }
+
+.test-autoprefixer {
+    user-select: none;
+    display: flex;
+}
