@@ -14,8 +14,8 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(),//实例化，参数为目录
     new HtmlWebpackPlugin({
-        template: "./src/index.html",
-        inject: true
+      template: "./src/index.html",
+      inject: true
     }),
     new MiniCssExtractPlugin({
       // Options similar to the same options in webpackOptions.output
@@ -24,14 +24,43 @@ module.exports = {
     })
   ],
   module: {
-    rules: [{
+    rules: [
+      {
         test: /\.scss$/,
         use: [
-            MiniCssExtractPlugin.loader,// 將CSS提取到單獨的文件中
-            // "style-loader", // 将 JS 字符串生成为 style 节点
-            "css-loader", // 将 CSS 转化成 CommonJS 模块
-            "sass-loader" // 将 Sass 编译成 CSS，默认使用 Node Sass
+          {
+            loader: MiniCssExtractPlugin.loader,// 將CSS提取到單獨的文件中
+            options: {
+              publicPath : '../'
+            }
+          },
+          
+          // "style-loader", // 将 JS 字符串生成为 style 节点
+          "css-loader", // 将 CSS 转化成 CommonJS 模块
+          "sass-loader" // 将 Sass 编译成 CSS，默认使用 Node Sass
         ]
-    }]
-}
+      },
+      {
+        test: /\.(png|svg|jpe?g|gif)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: 'img'
+            },
+          },
+        ]
+      },
+      {
+        test: /\.(html)$/,
+        use: {
+          loader: 'html-loader',
+          options: {
+            attrs: ['img:src']
+          }
+        }
+      }
+    ]
+  }
 };
