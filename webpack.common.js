@@ -5,22 +5,32 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
   mode: 'development',
-  entry: './src/js/index.js',
+  entry: {
+    index: './src/js/index.js',
+    post: './src/js/post.js',
+  },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'js/index.js'
+    filename: 'js/[name].js'
   },
   // 由于plugin可以携带参数/选项，必须在wepback配置中，向plugins属性传入new实例
   plugins: [
     new CleanWebpackPlugin(),//实例化，参数为目录
     new HtmlWebpackPlugin({
       template: "./src/index.html",
-      inject: true
+      inject: true,
+      chunks: ['index'],
+    }),
+    new HtmlWebpackPlugin({
+      filename: "post.html",
+      template: "./src/post.html",
+      inject: true,
+      chunks: ['post'],
     }),
     new MiniCssExtractPlugin({
       // Options similar to the same options in webpackOptions.output
       // both options are optional
-      filename: "css/index.css",
+      filename: "css/[name].css",
     })
   ],
   module: {
